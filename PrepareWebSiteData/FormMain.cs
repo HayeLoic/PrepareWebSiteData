@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrepareWebSiteData.Helper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace PrepareWebSiteData
         private const string defaultPhotographiesFolder = @"K:\Loic\Dev\annie-web-site\src\assets\photography";
         private const string default3dWorkFolder = @"K:\Loic\Dev\annie-web-site\src\assets\three-d-work";
         private const string AssetsFolderIdentifier = @"\assets\";
+        private readonly string[] ExcludedExtensions = { ".json" };
+        private JsonHelper jsonhelper; 
 
         public FormMain()
         {
@@ -22,6 +25,7 @@ namespace PrepareWebSiteData
         {
             try
             {
+                this.jsonhelper = new JsonHelper();
                 this.textBoxPhotographiesFolder.Text = defaultPhotographiesFolder;
                 this.textBox3dWorkFolder.Text = default3dWorkFolder;
             }
@@ -38,12 +42,15 @@ namespace PrepareWebSiteData
                 List<Image> images = new List<Image>();
                 foreach (string file in Directory.EnumerateFiles(this.textBoxPhotographiesFolder.Text))
                 {
-                    images.Add(new Image
+                    if (!ExcludedExtensions.Contains(Path.GetExtension(file)))
                     {
-                        Id = this.GenerateId(images),
-                        FileName = Path.GetFileName(file),
-                        Location = string.Empty
-                    });
+                        images.Add(new Image
+                        {
+                            Id = this.GenerateId(images),
+                            FileName = Path.GetFileName(file),
+                            Location = string.Empty
+                        });
+                    }
                 }
                 
                 this.textBoxPhotographiesResult.Text = this.GenerateImageListResult(images);
@@ -132,16 +139,7 @@ namespace PrepareWebSiteData
 
         private string GenerateImageListResult(List<Image> images)
         {
-            string result = string.Empty;
-            foreach (Image image in images)
-            {
-                if (!string.IsNullOrWhiteSpace(result))
-                {
-                    result += "," + Environment.NewLine;
-                }
-                result += $"new Image({{ fileName: '{image.FileName}' }})";
-            }
-            return result;
+            return this.jsonhelper.SerializeObject(images);
         }
 
         private string StringifyProjects(List<Project> projects)
