@@ -9,13 +9,13 @@ namespace PrepareWebSiteData.Photography
 {
     public class PhotographyService
     {
-        private const string JsonFileExtension = ".json";
-        private readonly string[] excludedExtensions = { JsonFileExtension };
+        private readonly List<string> excludedExtensions = new List<string>();
         private readonly JsonHelper jsonhelper;
 
         public PhotographyService(JsonHelper jsonhelper)
         {
             this.jsonhelper = jsonhelper;
+            excludedExtensions.Add(this.jsonhelper.GetJsonFileExtension());
         }
 
         public string ReadPhotographies(string photographiesFolder)
@@ -38,12 +38,19 @@ namespace PrepareWebSiteData.Photography
             }
         }
 
+        public List<Image> MergeOldAndNewImages(List<Image> oldImages, List<Image> newImages)
+        {
+            List<Image> mergedImages = this.RemoveDeletedImages(oldImages, newImages);
+            mergedImages = this.AddNewImages(mergedImages, newImages);
+            return mergedImages.OrderBy(image => image.Id).ToList();
+        }
+
         private List<Image> GetImagesFromJsonFile(string photographiesFolder)
         {
             List<Image> images = new List<Image>();
             foreach (string file in Directory.EnumerateFiles(photographiesFolder))
             {
-                if (this.IsJsonFileExtension(file))
+                if (this.jsonhelper.IsJsonFileExtension(file))
                 {
                     using (StreamReader streamReader = new StreamReader(file))
                     {
@@ -71,13 +78,6 @@ namespace PrepareWebSiteData.Photography
                 }
             }
             return images;
-        }
-
-        private List<Image> MergeOldAndNewImages(List<Image> oldImages, List<Image> newImages)
-        {
-            List<Image> mergedImages = this.RemoveDeletedImages(oldImages, newImages);
-            mergedImages = this.AddNewImages(mergedImages, newImages);
-            return mergedImages.OrderBy(image => image.Id).ToList();
         }
 
         private List<Image> RemoveDeletedImages(List<Image> oldImages, List<Image> newImages)
@@ -116,11 +116,6 @@ namespace PrepareWebSiteData.Photography
                 }
             }
             return images;
-        }
-
-        private bool IsJsonFileExtension(string fileFullPath)
-        {
-            return Path.GetExtension(fileFullPath) == JsonFileExtension;
         }
     }
 }
