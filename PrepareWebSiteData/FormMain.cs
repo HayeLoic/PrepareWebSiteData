@@ -1,6 +1,7 @@
 ﻿using PrepareWebSiteData.Helper;
 using System;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using PrepareWebSiteData.Photography;
 using PrepareWebSiteData.ThreeDwork;
 
@@ -114,6 +115,39 @@ namespace PrepareWebSiteData
         {
             this.labelPhotographiesResultCopied.Visible = isVisible;
             this.label3dWorkResultCopied.Visible = isVisible;
+        }
+
+        private void buttonSelectPhotographiesFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.textBoxPhotographiesFolder.Text = this.GetChoosenFolder(this.textBoxPhotographiesFolder.Text);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void buttonSelectProjectsFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.textBox3dWorkFolder.Text = this.GetChoosenFolder(this.textBox3dWorkFolder.Text);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private string GetChoosenFolder(string previousFolderValue)
+        {
+            CommonOpenFileDialog commonOpenFileDialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true
+            };
+            return commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok ? commonOpenFileDialog.FileName : previousFolderValue;
         }
     }
 }

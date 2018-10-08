@@ -47,6 +47,8 @@
             this.textBox3dWorkResult = new System.Windows.Forms.TextBox();
             this.buttonRead3dWork = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.buttonSelectPhotographiesFolder = new System.Windows.Forms.Button();
+            this.buttonSelectProjectsFolder = new System.Windows.Forms.Button();
             this.tabControlPhotographies.SuspendLayout();
             this.tabPagePhotograpies.SuspendLayout();
             this.tabPage3dWork.SuspendLayout();
@@ -67,7 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPhotographiesFolder.Location = new System.Drawing.Point(83, 6);
             this.textBoxPhotographiesFolder.Name = "textBoxPhotographiesFolder";
-            this.textBoxPhotographiesFolder.Size = new System.Drawing.Size(611, 20);
+            this.textBoxPhotographiesFolder.Size = new System.Drawing.Size(572, 20);
             this.textBoxPhotographiesFolder.TabIndex = 1;
             // 
             // buttonReadPhotographies
@@ -76,7 +78,7 @@
             this.buttonReadPhotographies.Location = new System.Drawing.Point(708, 3);
             this.buttonReadPhotographies.Name = "buttonReadPhotographies";
             this.buttonReadPhotographies.Size = new System.Drawing.Size(75, 23);
-            this.buttonReadPhotographies.TabIndex = 2;
+            this.buttonReadPhotographies.TabIndex = 3;
             this.buttonReadPhotographies.Text = "Lire";
             this.buttonReadPhotographies.UseVisualStyleBackColor = true;
             this.buttonReadPhotographies.Click += new System.EventHandler(this.buttonReadPhotographies_Click);
@@ -91,7 +93,7 @@
             this.textBoxPhotographiesResult.Name = "textBoxPhotographiesResult";
             this.textBoxPhotographiesResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxPhotographiesResult.Size = new System.Drawing.Size(700, 378);
-            this.textBoxPhotographiesResult.TabIndex = 3;
+            this.textBoxPhotographiesResult.TabIndex = 4;
             // 
             // label2
             // 
@@ -115,6 +117,7 @@
             // 
             // tabPagePhotograpies
             // 
+            this.tabPagePhotograpies.Controls.Add(this.buttonSelectPhotographiesFolder);
             this.tabPagePhotograpies.Controls.Add(this.labelPhotographiesResultCopied);
             this.tabPagePhotograpies.Controls.Add(this.buttonCopyPhotographiesResult);
             this.tabPagePhotograpies.Controls.Add(this.label1);
@@ -132,6 +135,7 @@
             // 
             // labelPhotographiesResultCopied
             // 
+            this.labelPhotographiesResultCopied.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPhotographiesResultCopied.AutoSize = true;
             this.labelPhotographiesResultCopied.Location = new System.Drawing.Point(9, 374);
             this.labelPhotographiesResultCopied.Name = "labelPhotographiesResultCopied";
@@ -141,6 +145,7 @@
             // 
             // buttonCopyPhotographiesResult
             // 
+            this.buttonCopyPhotographiesResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCopyPhotographiesResult.Location = new System.Drawing.Point(9, 393);
             this.buttonCopyPhotographiesResult.Name = "buttonCopyPhotographiesResult";
             this.buttonCopyPhotographiesResult.Size = new System.Drawing.Size(67, 23);
@@ -151,6 +156,7 @@
             // 
             // tabPage3dWork
             // 
+            this.tabPage3dWork.Controls.Add(this.buttonSelectProjectsFolder);
             this.tabPage3dWork.Controls.Add(this.label3dWorkResultCopied);
             this.tabPage3dWork.Controls.Add(this.buttonCopy3dWorkResult);
             this.tabPage3dWork.Controls.Add(this.label3);
@@ -168,6 +174,7 @@
             // 
             // label3dWorkResultCopied
             // 
+            this.label3dWorkResultCopied.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3dWorkResultCopied.AutoSize = true;
             this.label3dWorkResultCopied.Location = new System.Drawing.Point(9, 374);
             this.label3dWorkResultCopied.Name = "label3dWorkResultCopied";
@@ -177,6 +184,7 @@
             // 
             // buttonCopy3dWorkResult
             // 
+            this.buttonCopy3dWorkResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCopy3dWorkResult.Location = new System.Drawing.Point(9, 393);
             this.buttonCopy3dWorkResult.Name = "buttonCopy3dWorkResult";
             this.buttonCopy3dWorkResult.Size = new System.Drawing.Size(67, 23);
@@ -209,7 +217,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3dWorkFolder.Location = new System.Drawing.Point(83, 6);
             this.textBox3dWorkFolder.Name = "textBox3dWorkFolder";
-            this.textBox3dWorkFolder.Size = new System.Drawing.Size(611, 20);
+            this.textBox3dWorkFolder.Size = new System.Drawing.Size(572, 20);
             this.textBox3dWorkFolder.TabIndex = 6;
             // 
             // textBox3dWorkResult
@@ -222,7 +230,7 @@
             this.textBox3dWorkResult.Name = "textBox3dWorkResult";
             this.textBox3dWorkResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox3dWorkResult.Size = new System.Drawing.Size(700, 378);
-            this.textBox3dWorkResult.TabIndex = 8;
+            this.textBox3dWorkResult.TabIndex = 9;
             // 
             // buttonRead3dWork
             // 
@@ -230,7 +238,7 @@
             this.buttonRead3dWork.Location = new System.Drawing.Point(708, 3);
             this.buttonRead3dWork.Name = "buttonRead3dWork";
             this.buttonRead3dWork.Size = new System.Drawing.Size(75, 23);
-            this.buttonRead3dWork.TabIndex = 7;
+            this.buttonRead3dWork.TabIndex = 8;
             this.buttonRead3dWork.Text = "Lire";
             this.buttonRead3dWork.UseVisualStyleBackColor = true;
             this.buttonRead3dWork.Click += new System.EventHandler(this.buttonRead3dWork_Click);
@@ -238,6 +246,28 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // buttonSelectPhotographiesFolder
+            // 
+            this.buttonSelectPhotographiesFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSelectPhotographiesFolder.Location = new System.Drawing.Point(661, 3);
+            this.buttonSelectPhotographiesFolder.Name = "buttonSelectPhotographiesFolder";
+            this.buttonSelectPhotographiesFolder.Size = new System.Drawing.Size(41, 23);
+            this.buttonSelectPhotographiesFolder.TabIndex = 2;
+            this.buttonSelectPhotographiesFolder.Text = "...";
+            this.buttonSelectPhotographiesFolder.UseVisualStyleBackColor = true;
+            this.buttonSelectPhotographiesFolder.Click += new System.EventHandler(this.buttonSelectPhotographiesFolder_Click);
+            // 
+            // buttonSelectProjectsFolder
+            // 
+            this.buttonSelectProjectsFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSelectProjectsFolder.Location = new System.Drawing.Point(661, 3);
+            this.buttonSelectProjectsFolder.Name = "buttonSelectProjectsFolder";
+            this.buttonSelectProjectsFolder.Size = new System.Drawing.Size(41, 23);
+            this.buttonSelectProjectsFolder.TabIndex = 7;
+            this.buttonSelectProjectsFolder.Text = "...";
+            this.buttonSelectProjectsFolder.UseVisualStyleBackColor = true;
+            this.buttonSelectProjectsFolder.Click += new System.EventHandler(this.buttonSelectProjectsFolder_Click);
             // 
             // FormMain
             // 
@@ -276,6 +306,8 @@
         private System.Windows.Forms.Label label3dWorkResultCopied;
         private System.Windows.Forms.Label labelPhotographiesResultCopied;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button buttonSelectPhotographiesFolder;
+        private System.Windows.Forms.Button buttonSelectProjectsFolder;
     }
 }
 
