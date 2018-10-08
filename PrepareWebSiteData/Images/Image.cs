@@ -1,4 +1,4 @@
-﻿namespace PrepareWebSiteData
+﻿namespace PrepareWebSiteData.Images
 {
     public class Image
     {

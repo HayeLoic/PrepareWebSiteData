@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PrepareWebSiteData.Images;
 
-namespace PrepareWebSiteData
+namespace PrepareWebSiteData.ThreeDwork
 {
     public class Project
     {

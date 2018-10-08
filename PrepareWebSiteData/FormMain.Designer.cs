@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPhotographiesFolder = new System.Windows.Forms.TextBox();
             this.buttonReadPhotographies = new System.Windows.Forms.Button();
@@ -35,12 +36,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControlPhotographies = new System.Windows.Forms.TabControl();
             this.tabPagePhotograpies = new System.Windows.Forms.TabPage();
+            this.labelPhotographiesResultCopied = new System.Windows.Forms.Label();
+            this.buttonCopyPhotographiesResult = new System.Windows.Forms.Button();
             this.tabPage3dWork = new System.Windows.Forms.TabPage();
+            this.label3dWorkResultCopied = new System.Windows.Forms.Label();
+            this.buttonCopy3dWorkResult = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3dWorkFolder = new System.Windows.Forms.TextBox();
             this.textBox3dWorkResult = new System.Windows.Forms.TextBox();
             this.buttonRead3dWork = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.tabControlPhotographies.SuspendLayout();
             this.tabPagePhotograpies.SuspendLayout();
             this.tabPage3dWork.SuspendLayout();
@@ -109,6 +115,8 @@
             // 
             // tabPagePhotograpies
             // 
+            this.tabPagePhotograpies.Controls.Add(this.labelPhotographiesResultCopied);
+            this.tabPagePhotograpies.Controls.Add(this.buttonCopyPhotographiesResult);
             this.tabPagePhotograpies.Controls.Add(this.label1);
             this.tabPagePhotograpies.Controls.Add(this.label2);
             this.tabPagePhotograpies.Controls.Add(this.textBoxPhotographiesFolder);
@@ -122,8 +130,29 @@
             this.tabPagePhotograpies.Text = "Photographies";
             this.tabPagePhotograpies.UseVisualStyleBackColor = true;
             // 
+            // labelPhotographiesResultCopied
+            // 
+            this.labelPhotographiesResultCopied.AutoSize = true;
+            this.labelPhotographiesResultCopied.Location = new System.Drawing.Point(9, 374);
+            this.labelPhotographiesResultCopied.Name = "labelPhotographiesResultCopied";
+            this.labelPhotographiesResultCopied.Size = new System.Drawing.Size(34, 13);
+            this.labelPhotographiesResultCopied.TabIndex = 12;
+            this.labelPhotographiesResultCopied.Text = "Copié";
+            // 
+            // buttonCopyPhotographiesResult
+            // 
+            this.buttonCopyPhotographiesResult.Location = new System.Drawing.Point(9, 393);
+            this.buttonCopyPhotographiesResult.Name = "buttonCopyPhotographiesResult";
+            this.buttonCopyPhotographiesResult.Size = new System.Drawing.Size(67, 23);
+            this.buttonCopyPhotographiesResult.TabIndex = 5;
+            this.buttonCopyPhotographiesResult.Text = "Copier";
+            this.buttonCopyPhotographiesResult.UseVisualStyleBackColor = true;
+            this.buttonCopyPhotographiesResult.Click += new System.EventHandler(this.buttonCopyPhotographiesResult_Click);
+            // 
             // tabPage3dWork
             // 
+            this.tabPage3dWork.Controls.Add(this.label3dWorkResultCopied);
+            this.tabPage3dWork.Controls.Add(this.buttonCopy3dWorkResult);
             this.tabPage3dWork.Controls.Add(this.label3);
             this.tabPage3dWork.Controls.Add(this.label4);
             this.tabPage3dWork.Controls.Add(this.textBox3dWorkFolder);
@@ -136,6 +165,25 @@
             this.tabPage3dWork.TabIndex = 1;
             this.tabPage3dWork.Text = "3D Work";
             this.tabPage3dWork.UseVisualStyleBackColor = true;
+            // 
+            // label3dWorkResultCopied
+            // 
+            this.label3dWorkResultCopied.AutoSize = true;
+            this.label3dWorkResultCopied.Location = new System.Drawing.Point(9, 374);
+            this.label3dWorkResultCopied.Name = "label3dWorkResultCopied";
+            this.label3dWorkResultCopied.Size = new System.Drawing.Size(34, 13);
+            this.label3dWorkResultCopied.TabIndex = 11;
+            this.label3dWorkResultCopied.Text = "Copié";
+            // 
+            // buttonCopy3dWorkResult
+            // 
+            this.buttonCopy3dWorkResult.Location = new System.Drawing.Point(9, 393);
+            this.buttonCopy3dWorkResult.Name = "buttonCopy3dWorkResult";
+            this.buttonCopy3dWorkResult.Size = new System.Drawing.Size(67, 23);
+            this.buttonCopy3dWorkResult.TabIndex = 10;
+            this.buttonCopy3dWorkResult.Text = "Copier";
+            this.buttonCopy3dWorkResult.UseVisualStyleBackColor = true;
+            this.buttonCopy3dWorkResult.Click += new System.EventHandler(this.buttonCopy3dWorkResult_Click);
             // 
             // label3
             // 
@@ -187,6 +235,10 @@
             this.buttonRead3dWork.UseVisualStyleBackColor = true;
             this.buttonRead3dWork.Click += new System.EventHandler(this.buttonRead3dWork_Click);
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +271,11 @@
         private System.Windows.Forms.TextBox textBox3dWorkFolder;
         private System.Windows.Forms.TextBox textBox3dWorkResult;
         private System.Windows.Forms.Button buttonRead3dWork;
+        private System.Windows.Forms.Button buttonCopyPhotographiesResult;
+        private System.Windows.Forms.Button buttonCopy3dWorkResult;
+        private System.Windows.Forms.Label label3dWorkResultCopied;
+        private System.Windows.Forms.Label labelPhotographiesResultCopied;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
