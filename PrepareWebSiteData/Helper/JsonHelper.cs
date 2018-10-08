@@ -9,6 +9,7 @@ namespace PrepareWebSiteData.Helper
         {
             return JsonConvert.SerializeObject(
                 myObject,
+                Formatting.Indented,
                 new JsonSerializerSettings
                 {
                     ContractResolver = new CamelCasePropertyNamesContractResolver()

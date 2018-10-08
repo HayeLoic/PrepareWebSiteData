@@ -57,10 +57,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\JsonHelper.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="Images\Image.cs" />
+    <Compile Include="Photography\PhotographyService.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Project.cs" />
+    <Compile Include="ThreeDwork\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreeDwork\ThreeDworkService.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
