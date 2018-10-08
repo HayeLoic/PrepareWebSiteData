@@ -8,10 +8,11 @@ namespace PrepareWebSiteData
 {
     public partial class FormMain : Form
     {
+        private const int TimerIntervalInSeconds = 3;
         private const string DefaultPhotographiesFolder = @"K:\Loic\Dev\annie-web-site\src\assets\photography";
         private const string Default3DWorkFolder = @"K:\Loic\Dev\annie-web-site\src\assets\three-d-work";
-        private JsonHelper jsonhelper; 
-        private PhotographyService photographyService; 
+        private JsonHelper jsonhelper;
+        private PhotographyService photographyService;
         private ThreeDworkService threeDworkService;
 
         public FormMain()
@@ -29,6 +30,7 @@ namespace PrepareWebSiteData
                 this.threeDworkService = new ThreeDworkService(jsonhelper, photographyService);
                 this.textBoxPhotographiesFolder.Text = DefaultPhotographiesFolder;
                 this.textBox3dWorkFolder.Text = Default3DWorkFolder;
+                this.SetResultCopiedLabelsVisibility(false);
             }
             catch (Exception exception)
             {
@@ -52,13 +54,66 @@ namespace PrepareWebSiteData
         {
             try
             {
-                
                 this.textBox3dWorkResult.Text = this.threeDworkService.ReadProjects(this.textBox3dWorkFolder.Text);
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void buttonCopyPhotographiesResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.CopyResult(this.textBoxPhotographiesResult.Text, this.labelPhotographiesResultCopied);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void buttonCopy3dWorkResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.CopyResult(this.textBox3dWorkResult.Text, this.label3dWorkResultCopied);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void CopyResult(string resultToCopy, Label labelResultCopied)
+        {
+            if (!string.IsNullOrWhiteSpace(resultToCopy))
+            {
+                Clipboard.SetText(resultToCopy);
+                labelResultCopied.Visible = true;
+                timer.Interval = (TimerIntervalInSeconds * 1000);
+                timer.Start();
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                this.SetResultCopiedLabelsVisibility(false);
+                timer.Stop();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void SetResultCopiedLabelsVisibility(bool isVisible)
+        {
+            this.labelPhotographiesResultCopied.Visible = isVisible;
+            this.label3dWorkResultCopied.Visible = isVisible;
         }
     }
 }
