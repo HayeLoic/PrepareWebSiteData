@@ -84,7 +84,6 @@ namespace PrepareWebSiteData.ThreeDwork
                 {
                     Image image = new Image
                     {
-                        Id = this.photographyService.GenerateId(project.Images),
                         FileName = Path.GetFileName(file),
                         Location = string.Empty
                     };

@@ -26,23 +26,11 @@ namespace PrepareWebSiteData.Photography
             return this.jsonhelper.SerializeObject(images);
         }
 
-        public int GenerateId(List<Image> images)
-        {
-            if (images.Count == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return images.Max(image => image.Id) + 1;
-            }
-        }
-
         public List<Image> MergeOldAndNewImages(List<Image> oldImages, List<Image> newImages)
         {
             List<Image> mergedImages = this.RemoveDeletedImages(oldImages, newImages);
             mergedImages = this.AddNewImages(mergedImages, newImages);
-            return mergedImages.OrderBy(image => image.Id).ToList();
+            return mergedImages.OrderBy(image => image.FileName).ToList();
         }
 
         private List<Image> GetImagesFromJsonFile(string photographiesFolder)
@@ -71,7 +59,6 @@ namespace PrepareWebSiteData.Photography
                 {
                     images.Add(new Image
                     {
-                        Id = this.GenerateId(images),
                         FileName = Path.GetFileName(file),
                         Location = string.Empty
                     });
@@ -109,7 +96,6 @@ namespace PrepareWebSiteData.Photography
                 {
                     images.Add(new Image
                     {
-                        Id = this.GenerateId(images),
                         FileName = newImage.FileName,
                         Location = newImage.Location
                     });
